@@ -1,20 +1,58 @@
-/*TODO: update the color scheme to fit the Tokyo Night Terminal Color Scheme*/
 html {scrollbar-width: none;}
 html::-webkit-scrollbar {display: none;}
-body {background-color: #000}
 
-#console {font-family: courier, monospace;color: #fff;width:750px;margin-left:auto;margin-right:auto;margin-top:100px;font-size:14px;}
+/*? I don't know why the same colours are used twice in the palatte, it might be due to some terminal specs, might delete the dupes*/
+:root { /** switching to class if I decide to add more themes*/
+  /* Tokyo Night: https://cmuxthemes.com/themes/tokyonight/ */
+  --term-bg: #1a1b26;
+  --term-fg: #c0caf5;
+  --term-cursor: #c0caf5;
 
-a {color: #0bc;text-decoration: none;}
+  --term-black: #15161e;          
+  --term-red: #f7768e;            
+  --term-green: #9ece6a;          
+  --term-yellow: #e0af68;         
+  --term-blue: #7aa2f7;           
+  --term-magenta: #bb9af7;       
+  --term-cyan: #7dcfff;          
+  --term-white: #a9b1d6;         
+  --term-bright-black: #414868;  
+  --term-bright-red: #f7768e;    
+  --term-bright-green: #9ece6a;   
+  --term-bright-yellow: #e0af68;  
+  --term-bright-blue: #7aa2f7;    
+  --term-bright-magenta: #bb9af7; 
+  --term-bright-cyan: #7dcfff;  
+  --term-bright-white: #c0caf5;  
+}
 
-#a {color: #0f0;}
+body {background-color: var(--term-bg)}
 
-#c {color: #0bc;}
+.console {
+    font-family: courier, monospace;
+    color: var(--term-fg);
+    width:750px; 
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:4%; 
+    font-size:1em;
+} 
 
-#b {color: #ff0096;}
+.console::after{
+    content: "|";
+    animation: blink 1s steps(1) infinite;
+}
 
-#k {animation: change 1s;}
+@media (prefers-reduced-motion: reduce) {
+    .console::after{
+    animation: none;
+}
+}
 
-#op{color: #888888}
+.user {color: var(--term-green);}
 
-@keyframes change {0% { color: #0f0; }50% { color: #0f0; }99% { color: black; }}
+.tilde {color: var(--term-bright-magenta);}
+
+.dollar-sign {color: var(--term-magenta);}
+
+@keyframes blink {50% { opacity: 0%; }}
